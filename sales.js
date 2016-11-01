@@ -1,17 +1,14 @@
+//kos
 var runningTotal = 0.0;
 
 function addItem()
 {
   var newItem;
-  //newItem = document.getElementById("price").value;
-  //IF newItem is not a number
   if(!Number(document.getElementById("price").value))
   {
     window.alert("Enter price as a number");
 
   }
-  // THEN show an alert: "Enter price as a number"
-  //OTHERWISE,
   else
   {
     newItem = Number(document.getElementById("price").value);
@@ -22,13 +19,6 @@ function addItem()
     document.getElementById("price").value="";
     setCookie('preTax', runningTotal, 100);
   }
-  // update newItem to its value cast as a number
-  // update runningTotal to be its value plus newItem
-  // create a variable called dollars
-  // call asCurrency() by with the value of runningTotal and assign the return value to dollars
-  // update the innerHTML of the span with the id "subtotal" to be dollars
-  // update the value of the input with the id "price" to be an empty string
-  // update a cookie called "preTax" with the value of runningTotal
 }
 
 //takes a number and gives a string with the number displayed as USD currency
@@ -58,6 +48,5 @@ function getCookie(cname) {
             return c.substring(name.length, c.length);
         }
     }
-
     return "";
 }
