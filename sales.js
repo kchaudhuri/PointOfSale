@@ -8,20 +8,21 @@ function addItem()
   if(!Number(document.getElementById("price").value))
   {
     window.alert("Enter price as a number");
+
   }
   // THEN show an alert: "Enter price as a number"
   //OTHERWISE,
   else
   {
     newItem = Number(document.getElementById("price").value);
+    runningTotal += newItem;
+    var dollars;
+    dollars = asCurrency(runningTotal);
+    document.getElementById("subtotal").innerHTML=dollars;
+    document.getElementById("price").value="";
+    setCookie('preTax', runningTotal, 100);
   }
   // update newItem to its value cast as a number
-  runningTotal += newItem;
-  var dollars;
-  dollars = asCurrency(runningTotal)
-  document.getElementById("subtotal").innerHTML=dollars;
-  document.getElementById("price").value="";
-  //setCookie("preTax", runningTotal, 1)
   // update runningTotal to be its value plus newItem
   // create a variable called dollars
   // call asCurrency() by with the value of runningTotal and assign the return value to dollars
@@ -37,10 +38,11 @@ function asCurrency(val)
 }
 
 //courtesy of w3schools, from: http://www.w3schools.com/js/js_cookies.asp
-function setCookie(cname, cvalue, exdays) {
+
+function setCookie(cname,cvalue,exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays*24*60*60*1000));
-    var expires = "expires="+d.toUTCString();
+    var expires = "expires=" + d.toUTCString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 //courtesy of w3schools, from: http://www.w3schools.com/js/js_cookies.asp
@@ -56,5 +58,6 @@ function getCookie(cname) {
             return c.substring(name.length, c.length);
         }
     }
+
     return "";
 }
